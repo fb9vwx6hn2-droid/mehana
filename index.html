@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mehana</title>
+
+  <style>
+    /* 基本設定 */
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      color: #333;
+      background: #fafafa;
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    .slideshow img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    .header-content {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 14px;
+      border-radius: 50px;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    /* ===== Main ===== */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 16px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      margin: 60px 0 30px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2::before, h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+      margin: 0 15px;
+    }
+
+    main h2:first-of-type {
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 40px;
+      font-size: 1.2rem;
+      border-left: 4px solid #d4a373;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #f0f0f0;
+    }
+
+    .menu-item h4 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .menu-item small {
+      display: block;
+      color: #888;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .menu-item p {
+      font-size: 0.95rem;
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .price {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px dashed #eee;
+      font-weight: bold;
+      color: #d4a373;
+      font-size: 1rem;
+    }
+
+    /* ===== Info Content ===== */
+    .info-content {
+      text-align: center;
+      font-size: 1.1rem;
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 80px;
+      padding: 50px 20px;
+      background: #333;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* SNSボタンを横に並べる箱 */
+    .sns-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px; /* ボタン同士の間隔 */
+      margin-bottom: 10px;
+    }
+
+    .sns-link-block {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column; /* アイコンと文字を縦に並べる */
+      align-items: center;
+      transition: transform 0.2s;
+    }
+
+    .sns-link-block:active {
+      transform: scale(0.9);
+    }
+
+    .sns-icon-img {
+      width: 55px;  /* スマホで押しやすいサイズ */
+      height: 55px;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+
+    .sns-text {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (min-width: 601px) {
+      header { height: 75vh; }
+      .header-content { top: 30px; left: 30px; padding: 10px 20px; }
+      .header-content h1 { font-size: 1.6rem; }
+      h2 { font-size: 2rem; }
+      .menu-item { padding: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="slideshow">
+      <img src="beauty4.JPG" class="active" alt="橘エステ イメージ" />
+      <img src="beauty5.JPG" alt="橘エステ イメージ" />
+    </div>
+
+    <div class="header-content">
+      <img src="beauty1.JPG" alt="ロゴ" />
+      <h1>mehana</h1>
+    </div>
+  </header>
+
+  <main>
+    <h2>MENU</h2>
+
+    <h3>Body</h3>
+
+    <div class="menu-item">
+      <h4>漢方アロマオイルトリートメント</h4>
+      <small>（背中 / ヒップ / 脚 / お腹 / 腕 / デコルテ / ヘッド）</small>
+      <p>
+        凝り固まった筋肉をじんわりほぐすツボと、
+        ハワイアンロミロミを融合させた mehana オリジナルメニュー。
+        漢方アロマを使用し、心身ともに深いリラックスへ導きます。
+      </p>
+      <p class="price">90min ¥11,000 / 120min ¥13,200</p>
+    </div>
+
+    <div class="menu-item">
+      <h4>ベッドストレッチ × 揉みほぐし</h4>
+      <small>※リピーター様限定 / お着替え不要</small>
+      <p>
+        ツボ押しと指圧でお身体をほぐしながら、
+        ご自身では伸ばしにくい部分まで丁寧にストレッチしていきます。
+      </p>
+      <p class="price">60min ¥6,600</p>
+    </div>
+
+    <div class="menu-item">
+      <h4>漢方アロマオイルトリートメント（ショート）</h4>
+      <p>時間がない方におすすめのコースです。</p>
+      <p class="price">70min ¥8,800</p>
+    </div>
+
+    <div class="menu-item">
+      <h4>よもぎ蒸し</h4>
+      <p>
+        ハーブの女王と呼ばれるよもぎと数種類のハーブをブレンド。
+        蒸気で下半身から温め、香りによるリラックス効果も高めます。
+      </p>
+      <p class="price">40min ¥4,400<br><span style="font-size: 0.8rem; font-weight: normal;">（1ヶ月以内のご予約で¥500 OFF）</span></p>
+    </div>
+
+    <div class="menu-item">
+      <h4>おまかせコース</h4>
+      <p>
+        お疲れやお好みに合わせて、
+        漢方アロマオイルケア・フェイシャル・ベッドストレッチ・
+        ヘッドマッサージを組み合わせます。
+      </p>
+      <p class="price">150min ¥18,700 / 180min ¥22,000</p>
+    </div>
+
+    <h3>Facial</h3>
+
+    <div class="menu-item">
+      <h4>肌育ボンバーフェイシャル <span style="color: #e63946; font-size: 0.8rem; vertical-align: middle;">★人気No.1</span></h4>
+      <small>(フェイシャル・ヘッド・肩首・デコルテ・腕・お腹)</small>
+      <p>
+        栄養をたっぷり与えて血流を良くし、自分の細胞の力で美しいお肌を育てていく「肌育ボンバーフェイシャル」。美筋整顔マッサージで小顔効果も🎵
+      </p>
+      <p class="price">
+        120min ¥15,400<br>
+        <span style="color: #d4a373;">初回価格 ¥11,000</span><br>
+        <span style="font-size: 0.85rem; font-weight: normal; color: #888;">※2ヶ月以内のご予約で20%off</span>
+      </p>
+    </div>
+
+    <div class="menu-item">
+      <h4>ツヤ肌ふんわりフェイシャル</h4>
+      <small>クレンジング→洗顔→鼻の毛穴ケア→ヘッド&デコルテフェイシャルマッサージ→肌トラブル別美容液導入→鎮静パック→腕・フットマッサージ→お仕上げ</small>
+      <p>
+        マッサージ中心なのでリラックスしながら受けられるフェイシャル。ヘッドからしっかり緩めていきます。敏感肌の方や、お時間のない方におすすめです。
+      </p>
+      <p class="price">70min ¥8,800</p>
+    </div>
+
+    <h2>INFO</h2> 
+    
+    <div style="margin-bottom: 20px;">
+      <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">営業時間</h4>
+      <div class="info-content">
+        <p>10:00 〜 16:30</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">定休日</h4>
+      <div class="info-content">
+        <p>不定休</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">支払い方法</h4>
+      <div class="info-content">
+        <p>現金のみ</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">駐車場</h4>
+      <div class="info-content">
+        <p>駐車場あり（大きい車も安心）</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="sns-guide">ご予約はInstagramのDM、<br>またはLINEからお願いします</p>
+
+    <div class="sns-container">
+      <a href="https://www.instagram.com/yuumi_mehana" target="_blank" rel="noopener" class="sns-link-block">
+        <img src="Instagram.png" alt="Instagram" class="sns-icon-img">
+        <span class="sns-text">Instagram</span>
+      </a>
+
+      <a href="https://line.me/R/ti/p/@323dhrqd" target="_blank" rel="noopener" class="sns-link-block">
+        <img src="LINE.png" alt="LINE" class="sns-icon-img">
+        <span class="sns-text">LINE</span>
+      </a>
+    </div>
+    
+    <p style="font-size: 0.7rem; margin-top: 40px; opacity: 0.5;">&copy; 橘エステ All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+
+    if(slides.length > 0) {
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
