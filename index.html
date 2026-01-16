@@ -140,6 +140,24 @@
       font-size: 1rem;
     }
 
+    /* === クリックしてスムーズにアイコンまで移動するためのコード === */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* よもぎ蒸しの詳細（details）部分のカーソル設定 */
+    summary {
+      cursor: pointer; /* カーソルを指マークにする */
+      outline: none;   /* クリック時の青い枠線を消す（お好みで） */
+      list-style: none; /* デフォルトの三角矢印を消したい場合は追加 */
+    }
+
+    /* 触れた時に少し色を変えて「押せる感」を出す（おすすめ） */
+    summary:hover {
+      color: #d4a373;
+      transition: 0.3s;
+    }
+
     /* ===== Info Content ===== */
     .info-content {
       text-align: center;
@@ -208,6 +226,7 @@
     <div class="slideshow">
       <img src="beauty4.JPG" class="active" alt="橘エステ イメージ" />
       <img src="beauty5.JPG" alt="橘エステ イメージ" />
+      <img src="beauty10.JPG" alt="橘エステ イメージ" />
     </div>
 
     <div class="header-content">
@@ -217,44 +236,58 @@
   </header>
 
   <main>
+    <section style="text-align: center; padding: 40px 20px; color: #555;">
+      <p style="letter-spacing: 0.1em; font-size: 0.9rem;">七宝駅から徒歩7分【1日1組限定】</p>
+      <h2 style="border:none; margin: 10px 0;">不調の根本から整えて<br>自分を満たす時間を🌿</h2>
+      <p style="font-size: 0.95rem; line-height: 1.8;">
+        深くほぐして、巡らせて、回復しやすい体に。<br>
+        歴14年、手の温もりを大切にするオールハンドケアに拘っています。</p>
+    </section>
+
     <h2>MENU</h2>
 
     <h3>Body</h3>
 
     <div class="menu-item">
-      <h4>漢方アロマオイルトリートメント</h4>
-      <small>（背中 / ヒップ / 脚 / お腹 / 腕 / デコルテ / ヘッド）</small>
-      <p>
-        凝り固まった筋肉をじんわりほぐすツボと、
-        ハワイアンロミロミを融合させた mehana オリジナルメニュー。
-        漢方アロマを使用し、心身ともに深いリラックスへ導きます。
-      </p>
+      <h4>🌺 漢方アロマオイルトリートメント</h4>
+      <small>（背中・ヒップ・足裏・脚表・お腹・腕・デコルテ・ヘッド）</small>
+      <p>その日の体調に合わせた漢方アロマと、ハワイアンロミロミを融合させたmehanaオリジナル。前腕や肘も使い、深い凝りまでじんわりアプローチします。</p>
+      <ul style="font-size: 0.85rem; color: #666; padding-left: 20px;">
+        <li>睡眠不足・寝つきが悪い方に</li>
+        <li>慢性的な肩こり・首凝りがある方に</li>
+        <li>心身ともにデトックスしたい方に</li>
+      </ul>
       <p class="price">90min ¥11,000 / 120min ¥13,200</p>
+      <p style="font-size: 1.0rem; color: #d4a373;">※ 45日以内のご予約で ¥1,000 OFF</p>
     </div>
 
     <div class="menu-item">
       <h4>ベッドストレッチ × 揉みほぐし</h4>
-      <small>※リピーター様限定 / お着替え不要</small>
       <p>
         ツボ押しと指圧でお身体をほぐしながら、
         ご自身では伸ばしにくい部分まで丁寧にストレッチしていきます。
       </p>
       <p class="price">60min ¥6,600</p>
+      <p>※他メニューとの組み合わせで ¥1,000OFF</p>
     </div>
 
     <div class="menu-item">
       <h4>漢方アロマオイルトリートメント（ショート）</h4>
-      <p>時間がない方におすすめのコースです。</p>
+      <p>時間がない方、サクッとほぐされたい方におすすめのコースです。</p>
+      <p>※リピーター様限定です。</p>
       <p class="price">70min ¥8,800</p>
     </div>
 
     <div class="menu-item">
-      <h4>よもぎ蒸し</h4>
-      <p>
-        ハーブの女王と呼ばれるよもぎと数種類のハーブをブレンド。
-        蒸気で下半身から温め、香りによるリラックス効果も高めます。
-      </p>
-      <p class="price">40min ¥4,400<br><span style="font-size: 0.8rem; font-weight: normal;">（1ヶ月以内のご予約で¥500 OFF）</span></p>
+      <h4>🌿 よもぎ蒸し（ハーブ入り）</h4>
+      <p>ハーブの女王よもぎと、お好みのハーブをブレンド。蒸気で芯から温め、女性特有の揺らぎを整えます。</p>
+      <details style="font-size: 0.85rem; color: #888;">
+        <summary>必ずご確認ください（お断りさせていただく場合）</summary>
+        <p style="padding: 10px; background: #fafafa; border-radius: 8px;">
+        生理中、妊娠中（可能性含む）、よもぎアレルギー、高熱、通院中、怪我や日焼け直後の方はお控えいただいております。
+        </p>
+      </details>
+      <p class="price">40min ¥4,400</p>
     </div>
 
     <div class="menu-item">
@@ -278,7 +311,7 @@
       <p class="price">
         120min ¥15,400<br>
         <span style="color: #d4a373;">初回価格 ¥11,000</span><br>
-        <span style="font-size: 0.85rem; font-weight: normal; color: #888;">※2ヶ月以内のご予約で20%off</span>
+        <span style="font-size: 0.85rem; font-weight: normal; color: #888;">※2ヶ月以内のご予約で20%OFF</span>
       </p>
     </div>
 
@@ -292,6 +325,18 @@
     </div>
 
     <h2>INFO</h2> 
+
+    <div style="margin-bottom: 20px;">
+      <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">住所</h4>
+      <div class="info-content">
+        <p style="margin: 0;">愛知県あま市</p>
+        <p style="font-size: 0.85rem; color: #888; margin-top: 8px; line-height: 1.5;">
+          （詳しい住所は、下段の 
+          <a href="#sns-area" style="color: #d4a373; font-weight: bold; text-decoration: underline;">Instagram</a> または 
+          <a href="#sns-area" style="color: #d4a373; font-weight: bold; text-decoration: underline;">LINE</a> よりお伝えいたします）
+        </p>
+      </div>
+    </div>
     
     <div style="margin-bottom: 20px;">
       <h4 style="text-align: center; margin-bottom: 10px; font-size: 1.3rem; color: #888;">営業時間</h4>
@@ -321,12 +366,37 @@
       </div>
     </div>
 
+    <section style="margin-top: 80px; padding: 40px 20px; background: linear-gradient(135deg, #fffaf0 0%, #fff5f5 100%); border-radius: 30px; position: relative; border: 1px solid #feeaea;">
+
+      <div style="text-align: center; margin-bottom: 25px;">
+        <span style="font-size: 2rem;">🌿</span>
+        <h3 style="border: none; padding: 0; margin: 10px 0; font-size: 1.4rem; color: #d4a373; display: inline-block;">
+          Message
+        </h3>
+        <p style="font-size: 0.8rem; color: #999; letter-spacing: 0.2em; margin-top: -5px;">想い</p>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto;">
+        <p style="font-size: 0.95rem; color: #555; line-height: 2; text-align: justify; text-justify: inter-ideograph;">
+          はじめまして。mehanaの橘 侑実です。<br><br>
+          私は現在、大切なわが子の育児と、認知症を患う父の介護を並行しながら、自宅の一室でこのサロンを運営しております。<br><br>
+          保育園の急なお呼び出しなどで、稀にご予約の変更をお願いしてしまうことがあるかもしれません。大変心苦しいお願いではございますが、その分、お迎えするお一組様への情熱はどこよりも深く、お一人おひとりの心と身体に寄り添い、丁寧な施術をお約束いたします。<br><br>
+          「誰かのために」と毎日を一生懸命に生きる皆さまが、ふっと肩の力を抜いて、真っさらな自分に戻れる場所。そんな温かい止まり木のような存在でありたいと願っています。
+        </p>
+
+        <div style="margin-top: 30px; text-align: right; border-top: 1px solid #eee; padding-top: 20px;">
+          <p style="font-size: 0.8rem; color: #888; margin: 0;">mehana オーナーセラピスト</p>
+          <p style="font-size: 1.2rem; color: #d4a373; font-weight: bold; margin: 5px 0 0 0; letter-spacing: 0.1em;">橘 侑実</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <p class="sns-guide">ご予約はInstagramのDM、<br>またはLINEからお願いします</p>
 
-    <div class="sns-container">
+    <div id="sns-area" class="sns-container">
       <a href="https://www.instagram.com/yuumi_mehana" target="_blank" rel="noopener" class="sns-link-block">
         <img src="Instagram.png" alt="Instagram" class="sns-icon-img">
         <span class="sns-text">Instagram</span>
