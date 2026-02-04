@@ -72,6 +72,24 @@
       padding: 40px 16px;
     }
 
+    /* タイトルの調整 */
+    .main-title {
+      border: none !important;
+      margin: 10px 0 !important;
+      display: block !important; /* 中央揃えを維持 */
+      text-align: center;
+    }
+
+    .main-title span {
+      display: inline-block; /* 単語の途中で改行させない */
+      white-space: nowrap;  /* スパン内での改行を禁止 */
+    }
+
+    /* 擬似要素（横線）が邪魔をする場合は非表示にするか調整 */
+    .main-title::before, .main-title::after {
+      display: none; /* このタイトルだけ横線を消す場合 */
+    }
+    
     h2 {
       text-align: center;
       font-size: 1.5rem;
@@ -238,7 +256,7 @@
   <main>
     <section style="text-align: center; padding: 40px 20px; color: #555;">
       <p style="letter-spacing: 0.1em; font-size: 0.9rem;">七宝駅から徒歩7分【1日1組限定】</p>
-      <h2 style="border:none; margin: 10px 0;">不調の根本から整えて<br>自分を満たす時間を🌿</h2>
+      <h2 class="main-title"><span>不調の根本から整えて</span><span>自分を満たす時間を🌿</span></h2>
       <p style="font-size: 0.95rem; line-height: 1.8;">
         深くほぐして、巡らせて、回復しやすい体に。<br>
         歴14年、手の温もりを大切にするオールハンドケアに拘っています。</p>
