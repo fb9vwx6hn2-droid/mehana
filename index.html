@@ -8,16 +8,17 @@
 
   <style>
     :root {
-      --ink: #2f332f;
-      --muted: #6f756d;
-      --paper: #fffdf8;
-      --soft: #f6f0e7;
-      --sage: #6f8064;
-      --sage-dark: #43543d;
-      --clay: #b98262;
-      --line: #e6ded2;
+      --ink: #272f2a;
+      --muted: #647066;
+      --paper: #fffaf3;
+      --mist: #f5efe5;
+      --leaf: #51664b;
+      --leaf-deep: #2f4635;
+      --rose: #c47f7d;
+      --gold: #b88a55;
+      --line: #e3d8c8;
       --white: #ffffff;
-      --shadow: 0 18px 50px rgba(47, 51, 47, 0.12);
+      --shadow: 0 18px 50px rgba(45, 55, 48, 0.12);
     }
 
     * {
@@ -30,16 +31,16 @@
 
     body {
       margin: 0;
-      font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
       color: var(--ink);
       background: var(--paper);
-      line-height: 1.75;
+      font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      line-height: 1.78;
       -webkit-text-size-adjust: 100%;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
@@ -48,17 +49,18 @@
 
     .hero {
       position: relative;
-      min-height: 92svh;
-      overflow: hidden;
-      color: var(--white);
+      min-height: 94svh;
       display: grid;
       align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      isolation: isolate;
     }
 
     .slideshow {
       position: absolute;
       inset: 0;
-      z-index: 0;
+      z-index: -2;
     }
 
     .slideshow img {
@@ -68,8 +70,8 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transform: scale(1.02);
-      transition: opacity 1.5s ease, transform 5s ease;
+      transform: scale(1.03);
+      transition: opacity 1.4s ease, transform 5.6s ease;
     }
 
     .slideshow img.active {
@@ -77,104 +79,133 @@
       transform: scale(1);
     }
 
-    .hero::after {
+    .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: -1;
       background:
-        linear-gradient(180deg, rgba(31, 38, 31, 0.18) 0%, rgba(31, 38, 31, 0.42) 48%, rgba(31, 38, 31, 0.78) 100%);
+        linear-gradient(90deg, rgba(31, 42, 33, 0.82) 0%, rgba(31, 42, 33, 0.48) 50%, rgba(31, 42, 33, 0.14) 100%),
+        linear-gradient(180deg, rgba(31, 42, 33, 0.15) 0%, rgba(31, 42, 33, 0.8) 100%);
     }
 
-    .brand-pill {
+    .topbar {
       position: absolute;
       top: 18px;
       left: 18px;
-      z-index: 3;
+      right: 18px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 8px 14px 8px 8px;
-      background: rgba(255, 253, 248, 0.92);
       color: var(--ink);
+      background: rgba(255, 250, 243, 0.94);
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
     }
 
-    .brand-pill img {
-      width: 46px;
-      height: 46px;
-      object-fit: cover;
+    .brand img {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
+      object-fit: cover;
     }
 
-    .brand-pill span {
+    .brand span {
       font-size: 1.05rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.12em;
     }
 
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
+      background: rgba(255, 250, 243, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav a {
+      padding: 9px 13px;
+      color: var(--white);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
     .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(1080px, calc(100% - 36px));
+      width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
-      padding: 120px 0 44px;
+      padding: 132px 0 38px;
     }
 
     .hero-mark {
-      width: 108px;
-      height: 108px;
+      width: 124px;
+      height: 124px;
+      margin-bottom: 24px;
+      border: 5px solid rgba(255, 255, 255, 0.9);
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid rgba(255, 255, 255, 0.92);
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.28);
-      margin-bottom: 22px;
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.32);
     }
 
     .eyebrow {
-      margin: 0 0 12px;
-      font-size: 0.82rem;
-      font-weight: 700;
+      margin: 0 0 14px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.86rem;
+      font-weight: 800;
       letter-spacing: 0.16em;
-      text-transform: uppercase;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.9rem, 8vw, 6.2rem);
-      line-height: 0.95;
+      font-size: clamp(3.4rem, 10vw, 7.6rem);
+      line-height: 0.9;
       letter-spacing: 0;
-      font-weight: 700;
     }
 
     .hero-copy {
-      max-width: 680px;
-      margin: 22px 0 0;
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
-      line-height: 1.9;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+      max-width: 700px;
+      margin: 24px 0 0;
+      font-size: clamp(1.04rem, 2.2vw, 1.42rem);
+      font-weight: 700;
+      line-height: 1.95;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.34);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 12px 20px;
+      min-height: 50px;
+      padding: 12px 21px;
       border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.04em;
+      text-decoration: none;
       transition: transform 0.2s ease, background 0.2s ease;
     }
 
@@ -183,255 +214,376 @@
     }
 
     .button-primary {
+      color: var(--leaf-deep);
       background: var(--white);
-      color: var(--sage-dark);
     }
 
     .button-secondary {
-      background: rgba(255, 255, 255, 0.16);
       color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.62);
     }
 
-    .quick-info {
+    .hero-panel {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
+      width: min(960px, 100%);
       margin-top: 42px;
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.26);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.28);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(12px);
     }
 
-    .quick-info div {
-      padding: 14px 12px;
-      background: rgba(255, 255, 255, 0.14);
+    .hero-panel div {
+      padding: 16px 14px;
+      background: rgba(255, 255, 255, 0.13);
     }
 
-    .quick-info dt {
+    .hero-panel dt {
       font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      opacity: 0.8;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      opacity: 0.78;
     }
 
-    .quick-info dd {
-      margin: 2px 0 0;
-      font-weight: 700;
-    }
-
-    main {
-      overflow: hidden;
+    .hero-panel dd {
+      margin: 3px 0 0;
+      font-size: 0.98rem;
+      font-weight: 800;
     }
 
     .section {
-      padding: 76px 18px;
+      padding: 82px 18px;
     }
 
-    .section-soft {
-      background: var(--soft);
+    .section-alt {
+      background: var(--mist);
     }
 
     .inner {
-      width: min(1000px, 100%);
+      width: min(1080px, 100%);
       margin: 0 auto;
     }
 
-    .section-title {
-      margin: 0 0 30px;
+    .section-heading {
+      max-width: 760px;
+      margin: 0 auto 34px;
       text-align: center;
     }
 
-    .section-title span {
+    .label {
       display: block;
       margin-bottom: 8px;
-      color: var(--clay);
+      color: var(--gold);
       font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-weight: 900;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     h2 {
       margin: 0;
-      font-size: clamp(1.7rem, 4vw, 2.45rem);
-      line-height: 1.35;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      line-height: 1.34;
       letter-spacing: 0;
     }
 
-    h3 {
-      margin: 44px 0 18px;
-      padding-left: 14px;
-      border-left: 4px solid var(--sage);
-      font-size: 1.18rem;
-      letter-spacing: 0.04em;
-    }
-
     .lead {
-      max-width: 720px;
-      margin: 0 auto;
+      max-width: 760px;
+      margin: 18px auto 0;
       color: var(--muted);
       text-align: center;
       font-size: 1rem;
     }
 
-    .feature-grid {
+    .story {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .story-copy p {
+      margin: 0 0 18px;
+      color: #505b52;
+      font-size: 1rem;
+    }
+
+    .points {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .point {
+      padding: 17px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(45, 55, 48, 0.06);
+    }
+
+    .point b {
+      display: block;
+      color: var(--leaf-deep);
+      font-size: 1.02rem;
+    }
+
+    .point span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .photo-stack {
+      display: grid;
+      grid-template-columns: 1fr 0.72fr;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .photo-stack img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-stack img:first-child {
+      height: 430px;
+    }
+
+    .photo-stack img:last-child {
+      height: 310px;
+      margin-bottom: 32px;
+    }
+
+    .guide {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-top: 34px;
     }
 
-    .feature {
-      min-height: 150px;
-      padding: 22px;
+    .guide-item {
+      min-height: 176px;
+      padding: 24px;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(47, 51, 47, 0.06);
+      box-shadow: 0 12px 34px rgba(45, 55, 48, 0.07);
     }
 
-    .feature b {
+    .guide-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--white);
+      background: var(--leaf);
+      border-radius: 50%;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .guide-item b {
       display: block;
       margin-bottom: 8px;
-      color: var(--sage-dark);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
     }
 
-    .feature p {
+    .guide-item p {
       margin: 0;
       color: var(--muted);
       font-size: 0.94rem;
     }
 
-    .menu-list {
+    .menu-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 0 28px;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      color: var(--leaf-deep);
+      background: rgba(81, 102, 75, 0.1);
+      border: 1px solid rgba(81, 102, 75, 0.18);
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .menu-section-title {
+      margin: 44px 0 18px;
+      color: var(--leaf-deep);
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .menu-grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .menu-item {
+    .menu-card {
+      display: grid;
+      gap: 12px;
+      padding: 24px;
       background: var(--white);
-      padding: 22px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 12px 32px rgba(47, 51, 47, 0.07);
+      box-shadow: 0 14px 36px rgba(45, 55, 48, 0.07);
     }
 
-    .menu-item h4 {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 8px;
-      color: var(--ink);
-      font-size: 1.08rem;
+    .menu-card.featured {
+      border-color: rgba(196, 127, 125, 0.45);
+      box-shadow: 0 18px 48px rgba(196, 127, 125, 0.16);
+    }
+
+    .menu-card h4 {
+      margin: 0;
+      font-size: 1.14rem;
       line-height: 1.5;
     }
 
     .badge {
       display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
+      width: fit-content;
+      padding: 3px 9px;
+      color: #934946;
+      background: #f8e0df;
       border-radius: 999px;
-      background: #f8e7df;
-      color: #9c553c;
       font-size: 0.74rem;
-      font-weight: 700;
-      white-space: nowrap;
+      font-weight: 900;
     }
 
-    .menu-item small {
-      display: block;
+    .menu-card small {
       color: var(--muted);
       font-size: 0.86rem;
       line-height: 1.7;
     }
 
-    .menu-item p {
-      margin: 12px 0 0;
-      color: #545b52;
+    .menu-card p {
+      margin: 0;
+      color: #4e584f;
       font-size: 0.95rem;
     }
 
-    .menu-item ul {
-      margin: 12px 0 0;
+    .menu-card ul {
+      margin: 0;
       padding-left: 1.2rem;
-      color: #545b52;
-      font-size: 0.9rem;
+      color: #4e584f;
+      font-size: 0.92rem;
     }
 
     .price {
-      margin-top: 16px;
+      margin-top: auto;
       padding-top: 14px;
       border-top: 1px solid var(--line);
-      color: var(--sage-dark);
-      font-size: 1.02rem;
-      font-weight: 800;
+      color: var(--leaf-deep);
+      font-size: 1rem;
+      font-weight: 900;
     }
 
     .note {
-      color: var(--clay);
-      font-weight: 700;
+      color: var(--rose);
+      font-weight: 900;
     }
 
     details {
-      margin-top: 12px;
       color: var(--muted);
       font-size: 0.88rem;
     }
 
     summary {
       cursor: pointer;
-      font-weight: 700;
-      color: var(--sage-dark);
+      color: var(--leaf-deep);
+      font-weight: 900;
     }
 
-    .info-grid {
+    .info-band {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 1.1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .info-main {
+      padding: 32px;
+      color: var(--white);
+      background: var(--leaf-deep);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-main img {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 22px;
+      border: 3px solid rgba(255, 255, 255, 0.78);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .info-main h2 {
+      margin-bottom: 14px;
+    }
+
+    .info-main p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      margin-top: 30px;
     }
 
     .info-item {
-      min-height: 128px;
+      min-height: 132px;
       padding: 18px;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 8px;
-      text-align: center;
     }
 
-    .info-item h3 {
-      margin: 0 0 8px;
-      padding: 0;
-      border: 0;
-      color: var(--clay);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
+    .info-item b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
     }
 
     .info-item p {
       margin: 0;
-      font-weight: 700;
+      font-weight: 900;
     }
 
     .info-item small {
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 0.78rem;
       line-height: 1.6;
-      font-weight: 400;
     }
 
     .message {
       display: grid;
       grid-template-columns: 180px 1fr;
-      gap: 28px;
+      gap: 32px;
       align-items: center;
-      padding: 34px;
+      padding: 36px;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -441,14 +593,14 @@
     .message img {
       width: 180px;
       height: 180px;
+      border: 6px solid var(--mist);
       border-radius: 50%;
       object-fit: cover;
-      border: 6px solid var(--soft);
     }
 
     .message p {
       margin: 0 0 16px;
-      color: #4f554d;
+      color: #4e584f;
     }
 
     .signature {
@@ -464,57 +616,52 @@
     }
 
     .signature b {
-      color: var(--sage-dark);
+      color: var(--leaf-deep);
       font-size: 1.16rem;
       letter-spacing: 0.08em;
     }
 
     footer {
-      padding: 54px 18px 44px;
-      background: #2f332f;
+      padding: 60px 18px 42px;
       color: var(--white);
+      background: #243329;
       text-align: center;
     }
 
     .footer-logo {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 16px;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      border: 3px solid rgba(255, 255, 255, 0.82);
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.86);
     }
 
     .sns-guide {
-      margin: 0 0 22px;
-      font-size: 1rem;
-      font-weight: 700;
+      margin: 0 0 24px;
+      font-weight: 900;
     }
 
     .sns-container {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
     .sns-link-block {
-      width: 118px;
-      min-height: 96px;
+      width: 126px;
+      min-height: 98px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: var(--white);
-      text-decoration: none;
       border: 1px solid rgba(255, 255, 255, 0.26);
       border-radius: 8px;
+      color: var(--white);
+      text-decoration: none;
       transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .sns-link-block:active {
-      transform: translateY(1px);
     }
 
     .sns-icon-img {
@@ -524,68 +671,80 @@
     }
 
     .sns-text {
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
+      font-size: 0.84rem;
+      font-weight: 800;
     }
 
     .copyright {
-      margin: 28px 0 0;
+      margin: 0;
       opacity: 0.58;
       font-size: 0.74rem;
     }
 
     @media (hover: hover) {
       .button:hover,
-      .sns-link-block:hover {
+      .sns-link-block:hover,
+      .nav a:hover {
         transform: translateY(-2px);
       }
 
       .button-primary:hover {
-        background: #f7f4ed;
+        background: #f7f1e8;
       }
 
       .button-secondary:hover,
-      .sns-link-block:hover {
-        background: rgba(255, 255, 255, 0.1);
+      .sns-link-block:hover,
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.12);
       }
     }
 
-    @media (max-width: 820px) {
-      .feature-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 900px) {
+      .story,
+      .info-band,
       .message {
         grid-template-columns: 1fr;
-        text-align: left;
       }
 
-      .message img {
-        width: 128px;
-        height: 128px;
-        margin: 0 auto;
+      .guide,
+      .menu-grid,
+      .info-list {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-stack img:first-child,
+      .photo-stack img:last-child {
+        height: 300px;
+        margin-bottom: 0;
       }
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 88svh;
+    @media (max-width: 680px) {
+      .topbar {
+        align-items: flex-start;
       }
 
-      .brand-pill {
-        top: 12px;
-        left: 12px;
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 92svh;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(31, 42, 33, 0.32) 0%, rgba(31, 42, 33, 0.84) 100%);
       }
 
       .hero-inner {
-        width: min(100% - 28px, 1080px);
+        width: min(100% - 28px, 1120px);
         padding-bottom: 30px;
       }
 
       .hero-mark {
-        width: 92px;
-        height: 92px;
+        width: 96px;
+        height: 96px;
       }
 
       .hero-actions {
@@ -593,20 +752,32 @@
         grid-template-columns: 1fr;
       }
 
-      .quick-info {
+      .hero-panel {
         grid-template-columns: 1fr;
+        margin-top: 30px;
       }
 
       .section {
-        padding: 58px 14px;
+        padding: 62px 14px;
       }
 
-      .menu-item {
-        padding: 18px;
+      .photo-stack {
+        grid-template-columns: 1fr;
       }
 
-      .message {
+      .message,
+      .info-main {
         padding: 24px 18px;
+      }
+
+      .message img {
+        width: 132px;
+        height: 132px;
+        margin: 0 auto;
+      }
+
+      footer {
+        padding-bottom: 42px;
       }
     }
   </style>
@@ -619,24 +790,32 @@
       <img src="beauty10.JPG" alt="" />
     </div>
 
-    <div class="brand-pill">
-      <img src="beauty1.JPG" alt="mehanaの看板アイコン" />
-      <span>mehana</span>
+    <div class="topbar">
+      <a class="brand" href="#top" aria-label="mehana トップへ">
+        <img src="beauty1.JPG" alt="mehanaの看板アイコン" />
+        <span>mehana</span>
+      </a>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#care">特徴</a>
+        <a href="#menu">メニュー</a>
+        <a href="#info">ご案内</a>
+        <a href="#reserve">予約</a>
+      </nav>
     </div>
 
-    <div class="hero-inner">
+    <div id="top" class="hero-inner">
       <img src="beauty1.JPG" class="hero-mark" alt="mehanaの看板アイコン" />
-      <p class="eyebrow">1日1組限定 / 七宝駅から徒歩7分</p>
+      <p class="eyebrow">七宝駅から徒歩7分 / 1日1組限定</p>
       <h1>mehana</h1>
       <p class="hero-copy">
-        不調の根本から整えて、自分を満たす時間を。深くほぐして、巡らせて、回復しやすい体へ導くプライベートサロンです。
+        深くほぐして、巡らせて、回復しやすい体へ。あなただけの静かな時間で、不調の根本から整えるプライベートサロンです。
       </p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#sns-area">予約・お問い合わせ</a>
+        <a class="button button-primary" href="#reserve">予約・お問い合わせ</a>
         <a class="button button-secondary" href="#menu">メニューを見る</a>
       </div>
 
-      <dl class="quick-info">
+      <dl class="hero-panel">
         <div>
           <dt>AREA</dt>
           <dd>愛知県あま市</dd>
@@ -647,51 +826,100 @@
         </div>
         <div>
           <dt>STYLE</dt>
-          <dd>オールハンドケア</dd>
+          <dd>オールハンド</dd>
+        </div>
+        <div>
+          <dt>RESERVE</dt>
+          <dd>Instagram / LINE</dd>
         </div>
       </dl>
     </div>
   </header>
 
   <main>
-    <section class="section">
-      <div class="inner">
-        <div class="section-title">
-          <span>Private care</span>
-          <h2>ゆっくり深く整える、あなただけの時間。</h2>
-        </div>
-        <p class="lead">
-          歴14年、手の温もりを大切にしたケアにこだわっています。肩こり、睡眠不足、肌のゆらぎ、なんとなく抜けない疲れまで、その日の状態に合わせて丁寧に整えます。
-        </p>
+    <section id="care" class="section">
+      <div class="inner story">
+        <div class="story-copy">
+          <span class="label">Private care</span>
+          <h2>体がゆるむと、心まで少し軽くなる。</h2>
+          <p>
+            mehanaは、忙しい日々の中で自分のことを後回しにしてしまう方のための、1日1組限定のプライベートサロンです。
+          </p>
+          <p>
+            歴14年、手の温もりを大切にしたオールハンドケアで、肩こり、睡眠不足、肌のゆらぎ、なんとなく抜けない疲れまで、その日の状態に合わせて丁寧に整えます。
+          </p>
 
-        <div class="feature-grid">
-          <div class="feature">
-            <b>1日1組限定</b>
-            <p>まわりを気にせず、ゆっくり過ごせるプライベートな時間をご用意しています。</p>
+          <div class="points">
+            <div class="point">
+              <b>深くほぐす</b>
+              <span>前腕や肘も使い、奥に残るこわばりへじんわり届かせます。</span>
+            </div>
+            <div class="point">
+              <b>巡りを整える</b>
+              <span>漢方アロマや手技を組み合わせ、体が回復しやすい状態へ。</span>
+            </div>
+            <div class="point">
+              <b>初めてでも安心</b>
+              <span>ご予約前の不安が少なくなるよう、メニューとご案内を見やすくまとめています。</span>
+            </div>
           </div>
-          <div class="feature">
-            <b>不調の根本へ</b>
-            <p>深くほぐし、巡りを促し、体が回復しやすい状態へ近づけます。</p>
+        </div>
+
+        <div class="photo-stack" aria-label="サロンの雰囲気">
+          <img src="beauty5.JPG" alt="トリートメントの様子" />
+          <img src="beauty10.JPG" alt="サロンの空間" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="inner">
+        <div class="section-heading">
+          <span class="label">For first visit</span>
+          <h2>初めての方も、迷わず選べるように。</h2>
+          <p class="lead">どのメニューが合うか迷ったら、お疲れの状態や目的に合わせてご相談ください。</p>
+        </div>
+
+        <div class="guide">
+          <div class="guide-item">
+            <span class="guide-number">1</span>
+            <b>疲れをほどきたい</b>
+            <p>肩こり、首こり、睡眠不足には漢方アロマオイルトリートメントがおすすめです。</p>
           </div>
-          <div class="feature">
-            <b>初めてでも安心</b>
-            <p>メニューやご案内を見やすくまとめ、予約前の不安が少なくなるようにしました。</p>
+          <div class="guide-item">
+            <span class="guide-number">2</span>
+            <b>肌も気分も整えたい</b>
+            <p>お肌のゆらぎや顔まわりのこわばりにはフェイシャルメニューを。</p>
+          </div>
+          <div class="guide-item">
+            <span class="guide-number">3</span>
+            <b>全部まかせたい</b>
+            <p>お疲れに合わせて組み合わせる、おまかせコースでゆっくり整えます。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="menu" class="section section-soft">
+    <section id="menu" class="section">
       <div class="inner">
-        <div class="section-title">
-          <span>Menu</span>
+        <div class="section-heading">
+          <span class="label">Menu</span>
           <h2>メニュー</h2>
+          <p class="lead">時間、目的、当日の体調に合わせて選べます。価格はすべて税込です。</p>
         </div>
 
-        <h3>Facial</h3>
-        <div class="menu-list">
-          <div class="menu-item">
-            <h4>肌育ボンバーフェイシャル <span class="badge">人気No.1</span></h4>
+        <div class="menu-toolbar" aria-label="メニューの特徴">
+          <span class="chip">1日1組限定</span>
+          <span class="chip">オールハンド</span>
+          <span class="chip">駐車場あり</span>
+          <span class="chip">現金のみ</span>
+        </div>
+
+        <h3 class="menu-section-title">Facial</h3>
+        <div class="menu-grid">
+          <article class="menu-card featured">
+            <span class="badge">人気No.1</span>
+            <h4>肌育ボンバーフェイシャル</h4>
             <small>フェイシャル・ヘッド・肩首・デコルテ・腕・お腹</small>
             <p>栄養をたっぷり与えて血流を良くし、自分の細胞の力で美しいお肌を育てていくフェイシャル。美筋整顔マッサージで小顔効果も期待できます。</p>
             <p class="price">
@@ -699,22 +927,22 @@
               <span class="note">初回価格 ¥11,000</span><br>
               <small>※2ヶ月以内のご予約で20%OFF</small>
             </p>
-          </div>
+          </article>
 
-          <div class="menu-item">
+          <article class="menu-card">
             <h4>ツヤ肌ふんわりフェイシャル</h4>
             <small>クレンジング - 洗顔 - 鼻の毛穴ケア - ヘッド&デコルテフェイシャルマッサージ - 肌トラブル別美容液導入 - 鎮静パック - 腕・フットマッサージ - お仕上げ</small>
-            <p>マッサージ中心なのでリラックスしながら受けられるフェイシャル。ヘッドからしっかり緩めていきます。敏感肌の方や、お時間のない方におすすめです。</p>
+            <p>マッサージ中心なのでリラックスしながら受けられるフェイシャル。敏感肌の方や、お時間のない方にもおすすめです。</p>
             <p class="price">70min ¥8,800</p>
-          </div>
+          </article>
         </div>
 
-        <h3>Body</h3>
-        <div class="menu-list">
-          <div class="menu-item">
+        <h3 class="menu-section-title">Body</h3>
+        <div class="menu-grid">
+          <article class="menu-card featured">
             <h4>漢方アロマオイルトリートメント</h4>
             <small>背中・ヒップ・足裏・脚表・お腹・腕・デコルテ・ヘッド</small>
-            <p>その日の体調に合わせた漢方アロマと、ハワイアンロミロミを融合させたmehanaオリジナル。前腕や肘も使い、深い凝りまでじんわりアプローチします。</p>
+            <p>その日の体調に合わせた漢方アロマと、ハワイアンロミロミを融合させたmehanaオリジナル。深い凝りまでじんわりアプローチします。</p>
             <ul>
               <li>睡眠不足・寝つきが悪い方に</li>
               <li>慢性的な肩こり・首凝りがある方に</li>
@@ -722,23 +950,23 @@
             </ul>
             <p class="price">90min ¥11,000 / 120min ¥13,200</p>
             <p class="note">※45日以内のご予約で ¥1,000 OFF</p>
-          </div>
+          </article>
 
-          <div class="menu-item">
+          <article class="menu-card">
             <h4>ベッドストレッチ × 揉みほぐし</h4>
             <p>ツボ押しと指圧でお身体をほぐしながら、ご自身では伸ばしにくい部分まで丁寧にストレッチしていきます。</p>
             <p class="price">60min ¥6,600</p>
             <p>※他メニューとの組み合わせで ¥1,000 OFF</p>
-          </div>
+          </article>
 
-          <div class="menu-item">
+          <article class="menu-card">
             <h4>漢方アロマオイルトリートメント（ショート）</h4>
             <p>時間がない方、サクッとほぐされたい方におすすめのコースです。</p>
             <p>※リピーター様限定です。</p>
             <p class="price">70min ¥8,800</p>
-          </div>
+          </article>
 
-          <div class="menu-item">
+          <article class="menu-card">
             <h4>よもぎ蒸し（ハーブ入り）</h4>
             <p>ハーブの女王よもぎと、お好みのハーブをブレンド。蒸気で芯から温め、女性特有の揺らぎを整えます。</p>
             <details>
@@ -746,44 +974,46 @@
               <p>生理中、妊娠中（可能性含む）、よもぎアレルギー、高熱、通院中、怪我や日焼け直後の方はお控えいただいております。</p>
             </details>
             <p class="price">40min ¥4,400</p>
-          </div>
+          </article>
 
-          <div class="menu-item">
+          <article class="menu-card">
             <h4>おまかせコース</h4>
             <p>お疲れやお好みに合わせて、漢方アロマオイルケア・フェイシャル・ベッドストレッチ・ヘッドマッサージを組み合わせます。</p>
             <p class="price">150min ¥18,700 / 180min ¥22,000</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="inner">
-        <div class="section-title">
-          <span>Information</span>
+    <section id="info" class="section section-alt">
+      <div class="inner info-band">
+        <div class="info-main">
+          <img src="beauty1.JPG" alt="mehanaの看板アイコン" />
+          <span class="label">Information</span>
           <h2>ご案内</h2>
+          <p>詳しい住所は、ご予約時にInstagramまたはLINEよりお伝えいたします。</p>
         </div>
 
-        <div class="info-grid">
+        <div class="info-list">
           <div class="info-item">
-            <h3>住所</h3>
+            <b>住所</b>
             <p>愛知県あま市</p>
-            <small>詳しい住所はInstagramまたはLINEよりお伝えいたします。</small>
+            <small>七宝駅から徒歩7分</small>
           </div>
           <div class="info-item">
-            <h3>営業時間</h3>
+            <b>営業時間</b>
             <p>10:00 - 16:30</p>
           </div>
           <div class="info-item">
-            <h3>定休日</h3>
+            <b>定休日</b>
             <p>不定休</p>
           </div>
           <div class="info-item">
-            <h3>支払い方法</h3>
+            <b>支払い方法</b>
             <p>現金のみ</p>
           </div>
           <div class="info-item">
-            <h3>駐車場</h3>
+            <b>駐車場</b>
             <p>あり</p>
             <small>大きい車も安心です。</small>
           </div>
@@ -791,32 +1021,28 @@
       </div>
     </section>
 
-    <section class="section section-soft">
-      <div class="inner">
-        <div class="message">
-          <img src="beauty1.JPG" alt="mehanaの看板アイコン" />
-          <div>
-            <div class="section-title" style="text-align: left; margin-bottom: 18px;">
-              <span>Message</span>
-              <h2>想い</h2>
-            </div>
-            <p>
-              忙しい日々の中で、自分のことを後回しにしてしまう方へ。mehanaでは、体の声を聞きながら、深くほぐし、巡らせ、心までゆるむような時間を大切にしています。
-            </p>
-            <p>
-              その日のお疲れやお悩みに合わせて、無理なく整うケアを。帰る頃には、少し呼吸が深くなるような場所でありたいと思っています。
-            </p>
-            <div class="signature">
-              <small>mehana オーナーセラピスト</small>
-              <b>橘 侑実</b>
-            </div>
+    <section class="section">
+      <div class="inner message">
+        <img src="beauty1.JPG" alt="mehanaの看板アイコン" />
+        <div>
+          <span class="label">Message</span>
+          <h2>想い</h2>
+          <p>
+            忙しい日々の中で、自分のことを後回しにしてしまう方へ。mehanaでは、体の声を聞きながら、深くほぐし、巡らせ、心までゆるむような時間を大切にしています。
+          </p>
+          <p>
+            その日のお疲れやお悩みに合わせて、無理なく整うケアを。帰る頃には、少し呼吸が深くなるような場所でありたいと思っています。
+          </p>
+          <div class="signature">
+            <small>mehana オーナーセラピスト</small>
+            <b>橘 侑実</b>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer id="reserve">
     <img src="beauty1.JPG" class="footer-logo" alt="mehanaの看板アイコン" />
     <p class="sns-guide">ご予約はInstagramのDM、またはLINEからお願いします</p>
 
@@ -844,7 +1070,7 @@
         slides[current].classList.remove("active");
         current = (current + 1) % slides.length;
         slides[current].classList.add("active");
-      }, 4200);
+      }, 4300);
     }
   </script>
 </body>
